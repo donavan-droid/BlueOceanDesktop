@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="controller.InscriptionController"
+           style="-fx-background-color: linear-gradient(to bottom right,#0077B6,#00B4D8);">
+
+    <VBox spacing="14" maxWidth="380" styleClass="card"
+          StackPane.alignment="CENTER">
+
+        <Label text="🌊 Creer un compte" styleClass="titre"/>
+
+        <Label text="Nom complet" style="-fx-font-size:13px;"/>
+        <TextField fx:id="nomField" promptText="Ex: Jean Rakoto"/>
+
+        <Label text="CIN" style="-fx-font-size:13px;"/>
+        <TextField fx:id="cinField" promptText="Numero CIN"/>
+
+        <Label text="Telephone" style="-fx-font-size:13px;"/>
+        <TextField fx:id="telField" promptText="034 XX XXX XX"/>
+
+        <Label text="Nom d'utilisateur" style="-fx-font-size:13px;"/>
+        <TextField fx:id="usernameField" promptText="Username unique"/>
+
+        <Label text="Mot de passe" style="-fx-font-size:13px;"/>
+        <PasswordField fx:id="passwordField" promptText="Min. 6 caracteres"/>
+
+        <Label fx:id="msgLabel" text=""/>
+
+        <Button text="S'inscrire" styleClass="btn-primary"
+                maxWidth="Infinity" onAction="#handleInscription"/>
+
+        <Hyperlink text="Deja inscrit ? Se connecter"
+                   onAction="#allerLogin"
+                   style="-fx-text-fill:#0077B6;"/>
+    </VBox>
+</StackPane>

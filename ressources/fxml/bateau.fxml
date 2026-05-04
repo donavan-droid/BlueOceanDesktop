@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.BateauController">
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="12">
+            <Label text="🌊 BlueOcean" styleClass="navbar-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="⬅ Retour" styleClass="nav-btn"
+                    onAction="#retourDashboard"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="20" style="-fx-padding:24;">
+            <Label text="⛵ Mes Bateaux" styleClass="titre"/>
+
+            <VBox styleClass="card" spacing="12">
+                <Label text="Ajouter un bateau" styleClass="sous-titre"/>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <ComboBox fx:id="typeCombo" prefWidth="240"
+                              promptText="Type de bateau"/>
+                    <Button text="Ajouter" styleClass="btn-primary"
+                            onAction="#ajouterBateau"/>
+                    <Label fx:id="msgLabel" text=""/>
+                </HBox>
+            </VBox>
+
+            <TableView fx:id="tableBateaux" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId"   text="ID"
+                                 prefWidth="100"/>
+                    <TableColumn fx:id="colType" text="Type de bateau"
+                                 prefWidth="400"/>
+                    <TableColumn fx:id="colAction" text="Action"
+                                 prefWidth="160"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

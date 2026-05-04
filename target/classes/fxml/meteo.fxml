@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.MeteoController">
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="12">
+            <Label text="🌊 BlueOcean" styleClass="navbar-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="⬅ Retour" styleClass="nav-btn"
+                    onAction="#retourDashboard"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="20" style="-fx-padding:24;">
+            <Label text="🌦 Meteo et Alertes" styleClass="titre"/>
+
+            <!-- Widget météo -->
+            <VBox styleClass="card" spacing="10"
+                  style="-fx-background-color: linear-gradient(to right,#0077B6,#00B4D8);
+                         -fx-background-radius:12;">
+                <Label fx:id="villeLabel"
+                       style="-fx-text-fill:white; -fx-font-size:18px; -fx-font-weight:bold;"/>
+                <Label fx:id="tempLabel"
+                       style="-fx-text-fill:white; -fx-font-size:48px; -fx-font-weight:bold;"/>
+                <Label fx:id="descLabel"
+                       style="-fx-text-fill:white; -fx-font-size:16px;"/>
+                <HBox spacing="24">
+                    <Label fx:id="humiditeLabel" style="-fx-text-fill:white;"/>
+                    <Label fx:id="ventLabel"     style="-fx-text-fill:white;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Tableau des alertes -->
+            <Label text="Alertes actives" styleClass="sous-titre"
+                   style="-fx-text-fill:#E63946;"/>
+            <TableView fx:id="tableAlertes" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colType"    text="Type"    prefWidth="160"/>
+                    <TableColumn fx:id="colNiveau"  text="Niveau"  prefWidth="120"/>
+                    <TableColumn fx:id="colMessage" text="Message" prefWidth="400"/>
+                    <TableColumn fx:id="colDate"    text="Date"    prefWidth="180"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

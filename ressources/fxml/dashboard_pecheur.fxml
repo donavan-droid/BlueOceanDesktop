@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.DashboardPecheurController">
+
+    <!-- Navbar -->
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="12">
+            <Label text="🌊 BlueOcean" styleClass="navbar-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="🐟 Captures"   styleClass="nav-btn" onAction="#allerCaptures"/>
+            <Button text="⛵ Bateaux"    styleClass="nav-btn" onAction="#allerBateaux"/>
+            <Button text="🌦 Meteo"      styleClass="nav-btn" onAction="#allerMeteo"/>
+            <Button text="⚠ Signalement" styleClass="nav-btn" onAction="#allerSignalement"/>
+            <Button text="Deconnexion"   styleClass="nav-btn" onAction="#deconnecter"/>
+        </HBox>
+    </top>
+
+    <!-- Contenu -->
+    <center>
+        <VBox spacing="24" style="-fx-padding: 32;">
+            <Label fx:id="bienvenue" styleClass="titre"/>
+            <Label text="Tableau de bord" styleClass="sous-titre"/>
+
+            <GridPane hgap="20" vgap="20">
+                <!-- Carte Captures -->
+                <VBox styleClass="card" spacing="10"
+                      GridPane.columnIndex="0" GridPane.rowIndex="0"
+                      minWidth="220" onMouseClicked="#allerCaptures"
+                      style="-fx-cursor:hand;">
+                    <Label text="🐟" style="-fx-font-size:36px;"/>
+                    <Label text="Mes Captures" styleClass="sous-titre"/>
+                    <Label text="Enregistrer vos captures"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+
+                <!-- Carte Bateaux -->
+                <VBox styleClass="card" spacing="10"
+                      GridPane.columnIndex="1" GridPane.rowIndex="0"
+                      minWidth="220" onMouseClicked="#allerBateaux"
+                      style="-fx-cursor:hand;">
+                    <Label text="⛵" style="-fx-font-size:36px;"/>
+                    <Label text="Mes Bateaux" styleClass="sous-titre"/>
+                    <Label text="Gerer votre flotte"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+
+                <!-- Carte Meteo -->
+                <VBox styleClass="card" spacing="10"
+                      GridPane.columnIndex="2" GridPane.rowIndex="0"
+                      minWidth="220" onMouseClicked="#allerMeteo"
+                      style="-fx-cursor:hand;">
+                    <Label text="🌦" style="-fx-font-size:36px;"/>
+                    <Label text="Meteo" styleClass="sous-titre"/>
+                    <Label text="Previsions et alertes"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+
+                <!-- Carte Signalement -->
+                <VBox styleClass="card" spacing="10"
+                      GridPane.columnIndex="0" GridPane.rowIndex="1"
+                      minWidth="220" onMouseClicked="#allerSignalement"
+                      style="-fx-cursor:hand;">
+                    <Label text="⚠️" style="-fx-font-size:36px;"/>
+                    <Label text="Signalement" styleClass="sous-titre"/>
+                    <Label text="Signaler un probleme"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+            </GridPane>
+        </VBox>
+    </center>
+</BorderPane>

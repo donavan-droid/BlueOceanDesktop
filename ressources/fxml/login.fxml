@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="controller.LoginController"
+           style="-fx-background-color: linear-gradient(to bottom right, #0077B6, #00B4D8);">
+
+    <VBox spacing="16" maxWidth="360" styleClass="card"
+          StackPane.alignment="CENTER">
+
+        <Label text="🌊 BlueOcean" styleClass="titre"
+               style="-fx-alignment: center;"/>
+        <Label text="Systeme de gestion de la peche"
+               style="-fx-text-fill: #666666; -fx-font-size:13px;"/>
+
+        <Label text="Nom d'utilisateur" style="-fx-font-size:13px;"/>
+        <TextField fx:id="usernameField"
+                   promptText="Entrez votre username"/>
+
+        <Label text="Mot de passe" style="-fx-font-size:13px;"/>
+        <PasswordField fx:id="passwordField"
+                       promptText="••••••••"/>
+
+        <Label fx:id="erreurLabel" styleClass="erreur" text=""/>
+
+        <Button text="Se connecter" styleClass="btn-primary"
+                maxWidth="Infinity"
+                onAction="#handleLogin"/>
+
+        <Hyperlink text="Pas encore inscrit ? S'inscrire"
+                   onAction="#allerInscription"
+                   style="-fx-text-fill:#0077B6; -fx-font-size:13px;"/>
+    </VBox>
+</StackPane>

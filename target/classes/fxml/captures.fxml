@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.CaptureController">
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="12">
+            <Label text="🌊 BlueOcean" styleClass="navbar-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="⬅ Retour" styleClass="nav-btn"
+                    onAction="#retourDashboard"/>
+            <Button text="Deconnexion" styleClass="nav-btn"
+                    onAction="#deconnecter"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="20" style="-fx-padding:24;">
+            <Label text="🐟 Mes Captures" styleClass="titre"/>
+
+            <!-- Formulaire -->
+            <VBox styleClass="card" spacing="12">
+                <Label text="Enregistrer une capture" styleClass="sous-titre"/>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <TextField fx:id="especeField"
+                               promptText="Espece (ex: Thon, Capitaine...)"
+                               prefWidth="280"/>
+                    <TextField fx:id="poidsField"
+                               promptText="Poids (kg)" prefWidth="120"/>
+                    <Button text="Enregistrer" styleClass="btn-primary"
+                            onAction="#ajouterCapture"/>
+                </HBox>
+                <Label fx:id="msgLabel" text=""/>
+            </VBox>
+
+            <!-- Tableau -->
+            <TableView fx:id="tableCaptures" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colEspece" text="Espece"
+                                 prefWidth="280"/>
+                    <TableColumn fx:id="colPoids"  text="Poids (kg)"
+                                 prefWidth="160"/>
+                    <TableColumn fx:id="colDate"   text="Date"
+                                 prefWidth="200"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
