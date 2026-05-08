@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.AdminSignalementsController">
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="12">
+            <Label text="🌊 BlueOcean — Admin" styleClass="navbar-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="⬅ Retour" styleClass="nav-btn"
+                    onAction="#retour"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="16" style="-fx-padding:24;">
+            <Label text="⚠️ Tous les signalements" styleClass="titre"/>
+            <TableView fx:id="tableSignalements" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId"      text="ID"
+                                 prefWidth="60"/>
+                    <TableColumn fx:id="colPecheur" text="Pêcheur"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="colType"    text="Type"
+                                 prefWidth="140"/>
+                    <TableColumn fx:id="colLoc"     text="Localisation"
+                                 prefWidth="200"/>
+                    <TableColumn fx:id="colDesc"    text="Description"
+                                 prefWidth="300"/>
+                    <TableColumn fx:id="colDate"    text="Date"
+                                 prefWidth="160"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

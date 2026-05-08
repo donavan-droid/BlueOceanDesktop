@@ -1,6 +1,7 @@
 package controller;
 
 import app.MainApp;
+import app.Session;
 import dao.AlerteDAO;
 import model.Alerte;
 import service.MeteoService;
@@ -20,7 +21,8 @@ public class MeteoController {
                                                     colMessage, colDate;
 
     private MeteoService meteoService = new MeteoService();
-    private ObservableList<Alerte> data = FXCollections.observableArrayList();
+    private ObservableList<Alerte> data =
+        FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
@@ -41,34 +43,32 @@ public class MeteoController {
 
     private void chargerMeteo() {
         try {
-            // Coordonnees Antananarivo
             String json = meteoService.getMeteoJSON(-18.9137, 47.5361);
             JsonObject obj = JsonParser.parseString(json).getAsJsonObject();
-
             if (obj.has("main")) {
-                villeLabel.setText("📍 " + obj.get("name").getAsString()
-                    + ", Madagascar");
+                villeLabel.setText("📍 " +
+                    obj.get("name").getAsString() + ", Madagascar");
                 tempLabel.setText(Math.round(
                     obj.getAsJsonObject("main")
                        .get("temp").getAsDouble()) + "°C");
                 descLabel.setText(
-                    obj.getAsJsonArray("weather")
-                       .get(0).getAsJsonObject()
+                    obj.getAsJsonArray("weather").get(0)
+                       .getAsJsonObject()
                        .get("description").getAsString());
-                humiditeLabel.setText("💧 Humidite: "
-                    + obj.getAsJsonObject("main")
-                         .get("humidity").getAsInt() + "%");
-                ventLabel.setText("🌬 Vent: "
-                    + Math.round(obj.getAsJsonObject("wind")
-                                    .get("speed").getAsDouble() * 3.6)
-                    + " km/h");
-
+                humiditeLabel.setText("💧 Humidité: " +
+                    obj.getAsJsonObject("main")
+                       .get("humidity").getAsInt() + "%");
+                ventLabel.setText("🌬 Vent: " +
+                    Math.round(obj.getAsJsonObject("wind")
+                        .get("speed").getAsDouble() * 3.6) + " km/h");
                 meteoService.verifierEtCreerAlerte(json);
             } else {
-                villeLabel.setText("Donnees meteo indisponibles");
+                villeLabel.setText("⚠️ Données météo indisponibles");
+                tempLabel.setText("—");
             }
         } catch (Exception e) {
-            villeLabel.setText("Erreur API meteo");
+            villeLabel.setText("❌ Erreur API météo");
+            e.printStackTrace();
         }
     }
 
@@ -78,8 +78,17 @@ public class MeteoController {
         data.addAll(alertes);
     }
 
-    @FXML public void retourDashboard() {
-        try { MainApp.changerScene("dashboard_pecheur.fxml", 1100, 700); }
-        catch (Exception e) { e.printStackTrace(); }
+    // ← Navigation intelligente selon le rôle
+    @FXML
+    public void retourDashboard() {
+        try {
+            if (Session.estAdmin()) {
+                MainApp.changerScene("dashboard_admin.fxml", 1100, 700);
+            } else {
+                MainApp.changerScene("dashboard_pecheur.fxml", 1100, 700);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

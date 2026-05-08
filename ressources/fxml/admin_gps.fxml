@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.AdminGPSController">
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="12">
+            <Label text="🌊 BlueOcean — Admin" styleClass="navbar-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="⬅ Retour" styleClass="nav-btn"
+                    onAction="#retour"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="16" style="-fx-padding:24;">
+            <Label text="📍 Positions GPS de tous les bateaux"
+                   styleClass="titre"/>
+            <Label text="Cliquez sur une ligne pour voir les détails"
+                   style="-fx-text-fill:#666; -fx-font-size:13px;"/>
+
+            <TableView fx:id="tableBateaux" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId"     text="ID Bateau"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="colType"   text="Type"
+                                 prefWidth="180"/>
+                    <TableColumn fx:id="colLat"    text="Latitude"
+                                 prefWidth="150"/>
+                    <TableColumn fx:id="colLng"    text="Longitude"
+                                 prefWidth="150"/>
+                    <TableColumn fx:id="colDate"   text="Dernière position"
+                                 prefWidth="200"/>
+                    <TableColumn fx:id="colStatut" text="Statut"
+                                 prefWidth="120"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

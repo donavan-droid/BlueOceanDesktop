@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.DashboardAdminController">
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="12">
+            <Label text="🌊 BlueOcean — Admin" styleClass="navbar-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="👥 Utilisateurs" styleClass="nav-btn"
+                    onAction="#allerUtilisateurs"/>
+            <Button text="🐟 Captures"    styleClass="nav-btn"
+                    onAction="#allerCaptures"/>
+            <Button text="📍 GPS"         styleClass="nav-btn"
+                    onAction="#allerGPS"/>
+            <Button text="🌦 Météo"       styleClass="nav-btn"
+                    onAction="#allerMeteo"/>
+            <Button text="⚠ Signalements" styleClass="nav-btn"
+                    onAction="#allerSignalements"/>
+            <Button text="Déconnexion"    styleClass="nav-btn"
+                    onAction="#deconnecter"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="24" style="-fx-padding:32;">
+            <Label text="Tableau de bord Administrateur"
+                   styleClass="titre"/>
+
+            <!-- Statistiques -->
+            <HBox spacing="20">
+                <VBox styleClass="card" spacing="8"
+                      minWidth="200" alignment="CENTER">
+                    <Label fx:id="lblUsers"
+                           style="-fx-font-size:40px; -fx-font-weight:bold;
+                                  -fx-text-fill:#0077B6;"/>
+                    <Label text="Utilisateurs"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+                <VBox styleClass="card" spacing="8"
+                      minWidth="200" alignment="CENTER">
+                    <Label fx:id="lblCaptures"
+                           style="-fx-font-size:40px; -fx-font-weight:bold;
+                                  -fx-text-fill:#0077B6;"/>
+                    <Label text="Captures"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+                <VBox styleClass="card" spacing="8"
+                      minWidth="200" alignment="CENTER">
+                    <Label fx:id="lblBateaux"
+                           style="-fx-font-size:40px; -fx-font-weight:bold;
+                                  -fx-text-fill:#0077B6;"/>
+                    <Label text="Bateaux"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+                <VBox styleClass="card" spacing="8"
+                      minWidth="200" alignment="CENTER">
+                    <Label fx:id="lblSignalements"
+                           style="-fx-font-size:40px; -fx-font-weight:bold;
+                                  -fx-text-fill:#E63946;"/>
+                    <Label text="Signalements"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Raccourcis -->
+            <Label text="Accès rapide" styleClass="sous-titre"/>
+            <GridPane hgap="20" vgap="20">
+                <VBox styleClass="card" spacing="10"
+                      GridPane.columnIndex="0" GridPane.rowIndex="0"
+                      minWidth="200" onMouseClicked="#allerUtilisateurs"
+                      style="-fx-cursor:hand;">
+                    <Label text="👥" style="-fx-font-size:36px;"/>
+                    <Label text="Gérer utilisateurs" styleClass="sous-titre"/>
+                    <Label text="Ajouter, supprimer"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+                <VBox styleClass="card" spacing="10"
+                      GridPane.columnIndex="1" GridPane.rowIndex="0"
+                      minWidth="200" onMouseClicked="#allerGPS"
+                      style="-fx-cursor:hand;">
+                    <Label text="📍" style="-fx-font-size:36px;"/>
+                    <Label text="Positions GPS" styleClass="sous-titre"/>
+                    <Label text="Voir tous les bateaux"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+                <VBox styleClass="card" spacing="10"
+                      GridPane.columnIndex="2" GridPane.rowIndex="0"
+                      minWidth="200" onMouseClicked="#allerSignalements"
+                      style="-fx-cursor:hand;">
+                    <Label text="⚠️" style="-fx-font-size:36px;"/>
+                    <Label text="Signalements" styleClass="sous-titre"/>
+                    <Label text="Consulter les alertes"
+                           style="-fx-text-fill:#666;"/>
+                </VBox>
+            </GridPane>
+        </VBox>
+    </center>
+</BorderPane>

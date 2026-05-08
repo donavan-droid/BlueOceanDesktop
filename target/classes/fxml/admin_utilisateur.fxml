@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.AdminUtilisateursController">
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="12">
+            <Label text="🌊 BlueOcean — Admin" styleClass="navbar-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="⬅ Retour" styleClass="nav-btn"
+                    onAction="#retour"/>
+            <Button text="Déconnexion" styleClass="nav-btn"
+                    onAction="#deconnecter"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="16" style="-fx-padding:24;">
+            <Label text="👥 Gestion des utilisateurs"
+                   styleClass="titre"/>
+
+            <!-- Formulaire ajout admin -->
+            <VBox styleClass="card" spacing="12">
+                <Label text="Ajouter un administrateur"
+                       styleClass="sous-titre"/>
+                <HBox spacing="12">
+                    <TextField fx:id="usernameField"
+                               promptText="Username" prefWidth="200"/>
+                    <PasswordField fx:id="passwordField"
+                                  promptText="Mot de passe" prefWidth="200"/>
+                    <Button text="➕ Ajouter admin"
+                            styleClass="btn-primary"
+                            onAction="#ajouterAdmin"/>
+                    <Label fx:id="msgLabel" text=""/>
+                </HBox>
+            </VBox>
+
+            <TableView fx:id="tableUsers" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId"       text="ID"
+                                 prefWidth="80"/>
+                    <TableColumn fx:id="colUsername" text="Username"
+                                 prefWidth="250"/>
+                    <TableColumn fx:id="colRole"     text="Rôle"
+                                 prefWidth="150"/>
+                    <TableColumn fx:id="colAction"   text="Action"
+                                 prefWidth="150"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
